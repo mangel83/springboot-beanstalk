@@ -46,7 +46,7 @@ jobs:
       with:
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        region: 'us-east-1'
+        aws_region: 'us-east-1'
         application_name: 'springboot-actions'
         environment_name: 'Springboot-actions-env'
         version_label: 'helloworld-${{ github.run_number }}'
