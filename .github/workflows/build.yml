@@ -49,6 +49,6 @@ jobs:
         region: 'us-east-1'
         application_name: 'springboot-actions'
         environment_name: 'Springboot-actions-env'
-        version_label: 'main-${{ github.run_number }}'
+        version_label: 'helloworld-${{ github.run_number }}'
         deployment_package: 'helloworld-0.0.1-SNAPSHOT.jar'
         #source_bundle: 'app.zip'
