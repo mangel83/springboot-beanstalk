@@ -27,3 +27,24 @@ jobs:
       with:
         name: app
         path: target/*.jar
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    - name: Download JAR
+      uses: actions/download-artifact@v4
+      with:
+        name: app
+
+    - name: Deploy to Elastic Beanstalk
+      uses: einaregilsson/beanstalk-deploy@v1
+      with:
+        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        region: 'us-east-1'
+        application_name: 'springboot-actions'
+        environment_name: 'Springboot-actions-env'
+        version_label: 'main-${{ github.run_number }}'
+        source_bundle: 'app.zip'
